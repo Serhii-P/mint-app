@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
@@ -12,12 +12,21 @@ const LoginPage = () => {
   const state = useSelector((state) => state.auth.user);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [showError, setShowError] = useState("")
+  const [showError, setShowError] = useState("");
+  const [rememberMe, setRememberMe] = useState(false)
+
+  const handleChange = () => {
+    setRememberMe(!rememberMe)
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (userName && password) {
       if (state.userName == userName && state.pass == password) {
+        localStorage.setItem('rememberMe', rememberMe);
+        localStorage.setItem('user', rememberMe ? userName : '');
+        localStorage.setItem('pass', rememberMe ? password : '');    
+
         dispatch(loginSuccess());
         navigate("/mint")
       } else {
@@ -29,6 +38,15 @@ const LoginPage = () => {
       setShowError("Wrong Credentials")
     }
   };
+
+  useEffect(() => {
+    const rememberMe = localStorage.getItem('rememberMe') === 'true';
+    setRememberMe(rememberMe)
+    const user = rememberMe ? localStorage.getItem('user') : '';
+    const pass = rememberMe ? localStorage.getItem('pass') : '';
+    setUserName(user);
+    setPassword(pass);
+  }, [])
 
   return (
     <section className="section bg-light">
@@ -59,6 +77,11 @@ const LoginPage = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
+            <label>
+              <input name="rememberMe" checked={rememberMe} 
+              onChange={handleChange} type="checkbox"/> 
+              &nbsp; Remember me
+            </label>
             <div className="err-block text-danger">
               {showError}
             </div>

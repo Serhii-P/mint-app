@@ -11,6 +11,9 @@ const Mint = () => {
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
 
   const logOutHandler = () => {
+    localStorage.setItem('user', '');
+    localStorage.setItem('pass', '');    
+
     dispatch(logoutSuccess());
     navigate('/');
   }
