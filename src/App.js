@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
+import { Header } from './components/Header/Header';
+import RegisterPage from './components/Login/SignUp';
+import LoginPage from './components/Login/Login';
+import NewsPage from './pages/NewsPage';
+import NotFound from './pages/NotFound';
+import Welcome from './pages/Welcome';
+import Mint from './pages/Mint/Mint';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Routes>
+        <Route  path="/" element={<Welcome />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/news" element={<NewsPage />} />
+        <Route path="/mint" element={<Mint />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
-  );
+  )
 }
 
 export default App;

@@ -1,0 +1,28 @@
+.mint-btn {
+  background: blueviolet;
+  border-radius: 20px;
+  border: 2px solid #000;
+  color: #fff;
+  width: 300px;
+  margin: 0 auto;
+  display: block;
+  height: 100px;
+  margin-top: 50px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.mint-btn:disabled {
+  background: grey;
+  color: #594141;
+}
+
+.timer {
+  font-weight: bold;
+  color: green;
+}
+
+.counter {
+  font-weight: bold;
+  color: brown;
+}
