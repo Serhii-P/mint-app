@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/mint-app/static/css/main.e32d8dca.css",
+    "main.js": "/mint-app/static/js/main.0e49722c.js",
+    "index.html": "/mint-app/index.html",
+    "main.e32d8dca.css.map": "/mint-app/static/css/main.e32d8dca.css.map",
+    "main.0e49722c.js.map": "/mint-app/static/js/main.0e49722c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e32d8dca.css",
+    "static/js/main.0e49722c.js"
+  ]
+}
